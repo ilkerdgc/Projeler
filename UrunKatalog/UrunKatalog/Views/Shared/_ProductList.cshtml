@@ -1,0 +1,25 @@
+﻿@model IEnumerable<UrunKatalog.Models.Products>
+
+
+@foreach (var item in Model)
+{
+    <!-- Content Row -->
+    <div class="col-md-3 mb-4">
+        <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="~/images/@item.Image" height="160" alt=""></a>
+            <div class="card-body">
+                <h4 class="card-title">
+                    <a href="/Home/Details/@item.ProductId">@item.ProductNames</a>
+                </h4>
+                <h5>@item.Price.ToString("c")</h5>
+                <p class="card-text">@item.Description</p>
+            </div>
+            <div class="card-footer" style="margin-left:-10px">
+                <small class="text-muted" >&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                <a href="/Home/Details/@item.ProductId" class="btn btn-primary btn-sm float-right" style="color:white;margin-right:-10px "><i class="fa fa-angle-double-right" aria-hidden="true"></i> Ürünü İncele</a>
+            </div>
+        </div>
+    </div>
+}
+
+

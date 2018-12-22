@@ -1,0 +1,71 @@
+﻿@model UrunKatalog.ViewModels.OrderDetailsModel2
+@{
+    ViewBag.Title = "OrderProductDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Sipariş Detay Bilgileri</h2>
+            <hr />
+
+            <div class="row">
+                <dt class="col-sm-3">Kullanıcı Adı:</dt>
+                <dd class="col-sm-9"><span class="badge badge-primary">@Model.UserName</span></dd>
+
+                <dt class="col-sm-3">Sipariş Numarası:</dt>
+                <dd class="col-sm-9">@Model.OrderNumber</dd>
+
+                <dt class="col-sm-3">Sipariş Durumu:</dt>
+                <dd class="col-sm-9">@Model.OrderState</dd>
+
+                <dt class="col-sm-3">Toplam Fiyat:</dt>
+                <dd class="col-sm-9"><strong>@Model.TotalPrice.ToString("c")</strong> </dd>
+
+                <dt class="col-sm-3">Sipariş Tarihi:</dt>
+                <dd class="col-sm-9">@Model.OrderDate</dd>
+
+                <dt class="col-sm-3">Adres Başlığı:</dt>
+                <dd class="col-sm-9">@Model.AdresBasligi <hr /></dd>
+                <dt class="col-sm-3">Adres:</dt>
+                <dd class="col-sm-9">
+                    @Model.Adres
+                    <br />
+                    @Model.Sehir - @Model.Semt - @Model.Mahalle
+                    <br />
+                    @Model.PostaKodu
+                </dd>
+
+                <dt class="col-sm-3">Ürün:</dt>
+                <dd class="col-sm-9">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Resim</th>
+                                <th style="width:45%">Ürün Adı</th>
+                                <th>Adet</th>
+                                <th>Fiyat</th>
+                                <th style="width:10%"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.OrderProductDetails)
+                            {
+                                <tr>
+                                    <td><img src="~/images/@item.Image" width="100" /></td>
+                                    <td>@item.ProductName</td>
+                                    <td>@item.Quantity</td>
+                                    <td><i class="fa fa-try" aria-hidden="true"></i>@item.Price</td>
+                                    <td><a href="/Home/Details/@item.ProductId" class="btn btn-primary btn-sm" target="_blank"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Ürün Detay</a></td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </dd>
+            </div>
+        </div>
+    </div>
+</div>
+

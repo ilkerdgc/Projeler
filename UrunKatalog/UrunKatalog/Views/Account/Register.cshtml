@@ -1,0 +1,107 @@
+﻿@model UrunKatalog.ViewModels.Register
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Kayıt Ol</title>
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="~/vendor/bootstrap/css/small-business.css" rel="stylesheet" />
+    <link href="~/vendor/fonts/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/vendor/css/sb-admin.min.css" rel="stylesheet" />
+</head>
+<body class="bg-dark">
+    <div class="container">
+        <div class="card card-register mx-auto mt-5">
+            <div class="card-header">Bir hesap oluştur</div>
+            <div class="card-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-label-group">
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @id = "inputName", @placeholder = "Ad" } })
+                                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @for = "inputName" })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-label-group">
+                                    @Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "form-control", @id = "inputSurname", @placeholder = "Soyad" } })
+                                    @Html.LabelFor(model => model.Surname, htmlAttributes: new { @for = "inputSurname" })
+                                    @Html.ValidationMessageFor(model => model.Surname, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-label-group">
+                                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", @id = "inputUsername", @placeholder = "Kullanıcı Adı" } })
+                                    @Html.LabelFor(model => model.Username, htmlAttributes: new { @for = "inputUsername" })
+                                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-label-group">
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @id = "inputEmail", @placeholder = "Email Adres" } })
+                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @for = "inputEmail" })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-label-group">
+                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @id = "inputPassword", @placeholder = "Şifre" } })
+                                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @for = "inputPassword" })
+                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-label-group">
+                                    @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", @id = "inputConfirmPassword", @placeholder = "Şifre Tekrar" } })
+                                    @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @for = "inputConfirmPassword" })
+                                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*<a class="btn btn-primary btn-block" href="login.html">Kayıt Ol</a>*@
+                    <input type="submit" class="btn btn-primary btn-block" value="Kayıt Ol" />
+                }
+
+                <div class="text-center">
+                    <a class="d-block small mt-3" href="/Account/Login">Giriş Yap</a>
+                    <a class="d-block small" href="forgot-password.html">Parolanızı mı unuttunuz?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="~/vendor/js/jquery.validate.min.js"></script>
+    <script src="~/vendor/js/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<UrunKatalog.ViewModels.OrderDetailsModel>
+@{
+    ViewBag.Title = "OrderDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-3">
+    <h2>Siparişler</h2>
+    <hr />
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Sipariş Numarası</th>
+                <th>Sipariş Tarihi</th>
+                <th>Sipariş Durumu</th>
+                <th>Toplam Ürün Sayısı</th>
+                <th>Toplam Fiyat</th> 
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.OrderNumber</td>
+                    <td>@item.OrderDate</td>
+                    <td>@item.OrderState</td>
+                    <td>@item.TotalProduct</td>
+                    <td>@item.TotalPrice.ToString("c")</td>
+                    <td>
+                        @Html.ActionLink("Detay", "OrderProductDetails", new { id = item.OrderId}, new { @class = "btn btn-primary" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

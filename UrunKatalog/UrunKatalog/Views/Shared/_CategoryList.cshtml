@@ -1,0 +1,33 @@
+﻿@model IEnumerable<UrunKatalog.Models.Categories>
+
+@{ 
+    var selectedCategory = Url.RequestContext.RouteData.Values["id"];
+}
+
+<div class="list-group" id="x">
+    
+    @Ajax.ActionLink("Tüm Ürünler", "ProductList", "Home", new AjaxOptions { HttpMethod = "GET" }, new { @class = "list-group-item" })
+
+    @foreach (var item in Model)
+    {
+        if (selectedCategory != null)
+        {
+            if (item.CategoryId == int.Parse(selectedCategory.ToString()))
+            {
+                //<a href="/Home/ProductList/@item.CategoryId" class="list-group-item active">@item.CategoryName</a>
+                @Ajax.ActionLink(item.CategoryName, "ProductList", "Home", new { id = item.CategoryId }, new AjaxOptions { HttpMethod = "GET" }, new { @class = "list-group-item active" })
+            }
+            else
+            {
+                //<a href="/Home/ProductList/@item.CategoryId" class="list-group-item">@item.CategoryName</a>
+                @Ajax.ActionLink(item.CategoryName, "ProductList", "Home", new { id = item.CategoryId }, new AjaxOptions { HttpMethod = "GET" }, new { @class = "list-group-item" })
+            }
+        }
+        else
+        {
+            //<a href="/Home/ProductList/@item.CategoryId" class="list-group-item">@item.CategoryName</a>
+            @Ajax.ActionLink(item.CategoryName, "ProductList", "Home", new { id = item.CategoryId }, new AjaxOptions { HttpMethod = "GET" }, new { @class = "list-group-item" })
+        }
+    }
+
+</div>
